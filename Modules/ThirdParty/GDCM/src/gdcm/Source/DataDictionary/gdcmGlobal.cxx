@@ -75,7 +75,8 @@ Global::Global()
 {
   if(++GlobalCount == 1)
     {
-    assert( Internals == NULL ); // paranoid
+    // At line 195 we see that `Internals` is deliberately uninitialized. Thus it is stupid to check that it is not NULL in the constructor. 
+    // assert( Internals == NULL ); // paranoid
     Internals = new GlobalInternal;
     assert( Internals->GlobalDicts.IsEmpty() );
     // Fill in with default values now !
